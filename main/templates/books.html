@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,9 @@
 </head>
 <body>
     {% for details in book_details %}
-        <h3>{{ book_details.title }} - {{ book_details.author }} - {{ book_details.pub_year }}</h3>
+        <h3>{{ book_details.title }} - {{ book_details.pub_year }}</h3>
     {% endfor %}
 </body>
 </html>
+
+<!-- {{ book_details.author }} -  -->
