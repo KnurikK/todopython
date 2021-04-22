@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class ToDo(models.Model):
@@ -7,7 +8,7 @@ class ToDo(models.Model):
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
 
-class BookStore(models.Model):
+class Books(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100)
     description = models.TextField(max_length=350)
@@ -15,4 +16,4 @@ class BookStore(models.Model):
     genre = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
     pub_year = models.DateField(auto_now_add=True)
-    reg_date = models.DateField(auto_now_add=True)
+    reg_date = models.DateTimeField(default=timezone.now)

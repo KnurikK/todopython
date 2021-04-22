@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import ToDo, BookStore
+from .models import ToDo, Books
 
 def homepage(request):
-    return render(request, "index.html")
+    return render(request, "test.html")
 
 def test(request):
     todo_list = ToDo.objects.all()
@@ -14,9 +14,16 @@ def second(request):
 def third(request):
     return HttpResponse("This is page test3")
 
-def books(request):
-    book_details = BookStore.objects.all()
+def details_list(request):
+    book_details = Books.objects.all()
     return render(request, "books.html", {"book_details": book_details})
+
+def add_book(request):
+    form = request.POST
+    text = form["book_text"]
+    new_book = Books(text=text)
+    new_book.save()
+    return HttpResponse("Все работает как надо!")
 
 def add_todo(request):
     form = request.POST
@@ -35,3 +42,10 @@ def mark_todo(request, id):
     todo.is_favorite = True
     todo.save()
     return redirect(test)
+
+def unmark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = False
+    todo.save()
+    return redirect(test)
+    

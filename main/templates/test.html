@@ -28,7 +28,9 @@
             {% for todo in todo_list %}
             <div class="todo_item
                 {% if todo.is_favorite %}
-                    marked 
+                    marked
+                {% else %}
+                    unmarked
                 {% endif %}"
             >
             <div class="todo_item_header">

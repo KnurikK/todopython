@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from main.views import *
 from django.conf import settings
-from django.conf.urls.static import static 
+from django.conf.urls.static import static
+from main.views import Books
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,8 +28,10 @@ urlpatterns = [
     path('test3/', third),
     path('add-todo/', add_todo, name="add-todo"),
     path("delete-todo/<id>", delete_todo, name="delete-todo"),
-    path('books/', books, name="BookStore"),
+    path('books/', details_list, name="details_list"),
+    path('add-book/', add_book, name="add-book"),
     path("mark-todo/<id>", mark_todo, name="mark-todo"),
+    path("unmark-todo/<id>", unmark_todo, name="unmark-todo"),
 ]   + static(settings.STATIC_URL, document_root="settings.STATIC_ROOT") \
     + static(settings.MEDIA_URL, document_root="settings.MEDIA_ROOT") 
 
